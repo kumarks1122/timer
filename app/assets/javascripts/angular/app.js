@@ -1,0 +1,1 @@
+var suvApp = angular.module('suvApp',["ngResource", "ui-notification"]);
