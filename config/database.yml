@@ -10,10 +10,10 @@
 #   http://dev.mysql.com/doc/refman/5.7/en/old-client.html
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   pool: 10
-  username: root
+  username: kumarks
   password:
   host: localhost
 
@@ -51,4 +51,4 @@ production:
   <<: *default
   database: emaployee_timer_production
   username: emaployee_timer
-  password: <%= ENV['EMAPLOYEE_TIMER_DATABASE_PASSWORD'] %>
+  password: 

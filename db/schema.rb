@@ -12,14 +12,17 @@
 
 ActiveRecord::Schema.define(version: 20170815154801) do
 
-  create_table "time_trackers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "time_trackers", force: :cascade do |t|
     t.time "sign_time"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string "role", default: "employee", null: false
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false

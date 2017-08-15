@@ -90,11 +90,11 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'timer.doqik.com' }
+  config.action_mailer.default_url_options = { host: 'suvtimer.herokuapp.com' }
   config.action_mailer.smtp_settings = {
     :address              => 'smtp.sendgrid.net',
     :port                 => 587,
-    :domain               => 'timer.doqik.com',
+    :domain               => 'suvtimer.herokuapp.com',
     :user_name            => 'timerbeta',
     :password             => 'demo12345',
     :authentication       => 'login',
