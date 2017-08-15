@@ -1,0 +1,39 @@
+<div class="container-fluid" ng-controller="userController">
+	<div class="Page-Wrapper" ng-init="searchLogs()">
+		<div class="row">
+			<div>
+				<div class="col-sm-6 text-left">
+					<h3 class="User-Logs-Title">Logs for {{appliedDateFilter | date: 'dd/MM/yyyy'}}</h3>
+				</div>
+				<div class="col-sm-6 text-right">
+					<form class="form-inline" ng-submit="searchLogs()">
+						<div class="form-group">
+							<input type="date" class="form-control" name="date" ng-model="dateFilter" placeholder="DD/MM/YYYY">
+						</div>
+						<button type="submit" class="btn btn-default">Search</button>
+					</form>
+				</div>
+			</div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+						<th>Username</th>
+						<th>Login Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="log in logsData" log-table-row time="log.sign_time">
+						<td>{{log.user.first_name}}</td>
+						<td>{{log.user.last_name}}</td>
+						<td>{{log.user.email}}</td>
+						<td>{{log.user.username}}</td>
+						<td>{{log.sign_time | date: 'HH:mm a'}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

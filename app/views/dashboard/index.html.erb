@@ -1,0 +1,34 @@
+<div class="container-fluid" ng-controller="dashboardController">
+	<div class="Page-Wrapper">
+		<div class="row enroll-clock-container text-center">
+			<div class="col-sm-6">
+				<canvas class="CoolClock:swissRail" width="170" height="170" style="width: 170px; height: 170px;"></canvas>
+			</div>
+			<div class="col-sm-6">
+				<button type="button" ng-show="current_user_enrolled" disabled ng-click="enrollUser()" class="enroll-me-btn btn btn-success">Enrolled</button>
+				<button type="button" ng-hide="current_user_enrolled" ng-click="enrollUser()" class="enroll-me-btn btn btn-primary">Log me</button>
+			</div>
+		</div>
+		<div class="row user-enroll-logs">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Login Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="log in logsData" log-table-row time="log.sign_time">
+						<td>{{log.created_at | date: 'dd/MM/yyyy'}}</td>
+						<td>{{log.sign_time | date: 'HH:mm a'}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<script>
+	json = {
+		current_user_enrolled: <%= current_user_enrolled %>
+	}
+</script>

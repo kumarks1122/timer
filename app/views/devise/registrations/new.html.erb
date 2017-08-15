@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="userController">
   <div class="container Login-Form-Container col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12">
     <div class="Login-Form form1 col-sm-12">
       <div class="welcome-title">
@@ -7,15 +7,21 @@
       </div>
       <form class="new_user" id="new_user" ng-submit="signup()">
         <div class="form-group">
-          <label for="user_email">Name</label><br />
-          <input class="form-control" autofocus="autofocus" readonly onfocus="this.removeAttribute('readonly');"  type="name" placeholder="Your Name *" ng-model="signupUser.name" name="user[name]" id="user_name" required />
+          <label for="user_email">First Name</label><br />
+          <input class="form-control" autofocus="autofocus" readonly onfocus="this.removeAttribute('readonly');"  type="name" placeholder="First Name *" ng-model="signupUser.first_name" name="user[first_name]" id="user_first_name" required />
         </div>
-
+        <div class="form-group">
+          <label for="user_email">Last Name</label><br />
+          <input class="form-control" autofocus="autofocus" readonly onfocus="this.removeAttribute('readonly');"  type="name" placeholder="Last Name *" ng-model="signupUser.last_name" name="user[last_name]" id="user_last_name" required/>
+        </div>
         <div class="form-group">
           <label for="user_email">Email</label><br />
-          <input class="form-control" autofocus="autofocus" readonly onfocus="this.removeAttribute('readonly');"  type="email" placeholder="Your Email *" ng-model="signupUser.email" name="user[email]" id="user_email" required />
+          <input class="form-control" autofocus="autofocus" readonly onfocus="this.removeAttribute('readonly');"  type="email" placeholder="Email-id *" ng-model="signupUser.email" name="user[email]" id="user_email" required />
         </div>
-
+        <div class="form-group">
+          <label for="user_email">Username</label><br />
+          <input class="form-control" autofocus="autofocus" readonly onfocus="this.removeAttribute('readonly');"  type="name" placeholder="Username *" ng-model="signupUser.username" name="user[name]" id="user_username" required/>
+        </div>
         <div class="field">
           <label for="user_password">Password</label><br />
           <input class="form-control" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"  type="password" placeholder="Password *" ng-model="signupUser.password" name="user[password]" id="user_password" required />

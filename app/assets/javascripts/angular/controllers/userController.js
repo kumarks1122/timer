@@ -2,28 +2,31 @@ suvApp.controller("userController", ["$scope", "$filter","userRoutes", "Notifica
   function($scope, $filter, userRoutes, Notification) {
     $scope.loginUser = {}
     $scope.signupUser = {}
+    $scope.dateFilter = new Date()
+    $scope.appliedDateFilter = undefined
     $scope.login = function() {
-      Notification.clearAll()
       userRoutes.login({user: $scope.loginUser},function(resp) {
-        setSessionInfo(resp.token)
-        Notification.success({message: "Logged in successfully", delay: 1000})
-        setTimeout(function() {
-          location.href = '/'
-        },1500)
+        location.href = "/"
       },function(error) {
-        Notification.error({message: error.data.message, delay: 3000})
+        console.log(error.message)
+      })
+    }
+
+    $scope.searchLogs = function() {
+      userRoutes.searchLogs({date: moment($scope.dateFilter).utc()},function(resp) {
+        $scope.appliedDateFilter = angular.copy($scope.dateFilter)
+        $scope.logsData = resp.data
+      },function(error) {
         console.log(error.message)
       })
     }
 
     $scope.signup = function() {
+      $scope.signupUser.password_confirmation = $scope.signupUser.password
       userRoutes.signup({user: $scope.signupUser},function(resp) {
-        setSessionInfo(resp.token)
         location.href = '/thankyou'
       },function(error) {
         console.log(error.data.message)
-        Notification.clearAll()
-        Notification.error({message: error.data.message, delay: 3000})
       })
     }
   }

@@ -10,6 +10,18 @@ suvApp.factory('userRoutes', ["$resource",
 			signup: {
 				url: '/users.json',
 				method: 'POST'
+			},
+			make_login: {
+				url: '/accounts',
+				method: 'post'
+			},
+			getLogs: {
+				url: '/accounts/get_logs',
+				method: 'get'
+			},
+			searchLogs: {
+				url: '/accounts/user_logs',
+				method: 'get'
 			}
 		});
 		return rule;

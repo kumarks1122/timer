@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="suvApp">
+<html ng-app="suvApp" ng-controller="appController">
   <head>
+    <base href="/">
     <title>Timer</title>
     <%= csrf_meta_tags %>
 
@@ -8,7 +9,44 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="wrapper">
+        	<% unless current_user.nil? %>
+          <div class="side-bar">
+            <ul>
+              <li class="menu-head text-bold">
+                <a href="/" class="push_menu"><strong>Timer</strong> <span class="fa fa-clock pull-right"></span></a>
+              </li>
+              <div class="menu">
+                <li>
+                  <a href="/" ng-class="{'active': curPage=='/' || curPage=='/dashboard'}">Dashboard <span class="fa fa-tasks pull-right"></span></a>
+                </li>
+                <% if current_user.role=='admin' %>
+                <li>
+                  <a href="/accounts" ng-class="{'active': curPage=='/accounts'}">Accounts <span class="fa fa-group pull-right"></span></a>
+                </li>
+                <% end %>
+                <li>
+                  <a href="/users/sign_out" ng-click="logout()">Log out <span class="fa fa-power-off pull-right"></span></a>
+                </li>
+                <li class="Contact-link">
+                  <a href="mailto:testbeta@gmail.com">Contact <span class="fa fa-phone pull-right"></span></a>
+                </li>
+              </div>
+            </ul>
+          </div>  
+          <% end %>
+          <div class="main_content">
+            <div class="col-md-12">
+              <div class="">
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
