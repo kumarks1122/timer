@@ -37,6 +37,7 @@ suvApp.controller("userController", ["$scope", "$filter","userRoutes", "Notifica
     $scope.deleteUser = function(user, index) {
       userRoutes.delete({id: user.id},function(resp) {
         $scope.users.splice(index, 1)
+        Notification.success({message: "User deleted successfully", delay: 3000})
       },function(error) {
         console.log(error.message)
       })
