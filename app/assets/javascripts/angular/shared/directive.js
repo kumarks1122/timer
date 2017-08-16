@@ -5,7 +5,7 @@ suvApp.directive('logTableRow', [function () {
       time: '='
     },
     link: function (scope, iElement, iAttrs) {
-    	isLate = moment(scope.time).toDate() > moment(moment(scope.time).format("DD/MM/YYYY 10:00")).toDate()
+    	isLate = moment(scope.time).toDate() > moment(moment(scope.time).format("DD/MM/YYYY 10:01")).toDate()
     	if (isLate) {
     		$(iElement).addClass("danger")
     	}

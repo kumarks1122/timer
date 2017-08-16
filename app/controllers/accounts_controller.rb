@@ -10,7 +10,7 @@ class AccountsController < ApplicationController
 	end
 
 	def get_logs
-		logs = current_user.time_trackers
+		logs = current_user.time_trackers.order("created_at desc")
 		render :json => { :data=> logs }
 	end
 
@@ -30,7 +30,7 @@ class AccountsController < ApplicationController
 
 	def user_logs
 		date = DateTime.parse(params[:date])
-		logs = TimeTracker.where("created_at > ? and created_at < ?", date.beginning_of_day, date.end_of_day).to_json(include: [:user])
+		logs = TimeTracker.where("created_at > ? and created_at < ?", date.beginning_of_day, date.end_of_day).order("created_at desc").to_json(include: [:user])
 		render :json => { :data=> JSON.parse(logs) }
 	end
 end
