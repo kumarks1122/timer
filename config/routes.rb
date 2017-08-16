@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 	get "/thankyou" => 'dashboard#thankyou'
 	get "/accounts/get_logs" => 'accounts#get_logs'
 	get "/accounts/user_logs" => 'accounts#user_logs'
+	get "/manager" =>  'accounts#manager'
 
   devise_for :users
   

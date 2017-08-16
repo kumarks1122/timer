@@ -11,7 +11,7 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="wrapper">
+        <div class="wrapper <% if current_user.nil? %> active <% end %>">
         	<% unless current_user.nil? %>
           <div class="side-bar">
             <ul>
@@ -25,6 +25,9 @@
                 <% if current_user.role=='admin' %>
                 <li>
                   <a href="/accounts" ng-class="{'active': curPage=='/accounts'}">Accounts <span class="fa fa-group pull-right"></span></a>
+                </li>
+                <li>
+                  <a href="/manager" ng-class="{'active': curPage=='/manager'}">User Manager <span class="fa fa-user-times pull-right"></span></a>
                 </li>
                 <% end %>
                 <li>

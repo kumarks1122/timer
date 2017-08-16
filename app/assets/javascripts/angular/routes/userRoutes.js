@@ -22,7 +22,11 @@ suvApp.factory('userRoutes', ["$resource",
 			searchLogs: {
 				url: '/accounts/user_logs',
 				method: 'get'
-			}
+			},
+			delete: {
+				url: '/accounts/:id',
+				method: 'DELETE'
+			},
 		});
 		return rule;
 	}

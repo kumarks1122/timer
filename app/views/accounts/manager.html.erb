@@ -1,0 +1,38 @@
+<div class="container-fluid" ng-controller="userController">
+	<div class="Page-Wrapper">
+		<div class="row">
+			<div>
+				<div class="col-sm-6 text-left">
+					<h3 class="User-Logs-Title">Users List</h3>
+				</div>
+			</div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+						<th>Username</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="user in users" log-table-row time="log.sign_time">
+						<td>{{user.first_name}}</td>
+						<td>{{user.last_name}}</td>
+						<td>{{user.email}}</td>
+						<td>{{user.username}}</td>
+						<td>
+							<a href="" ng-click="deleteUser(user, $index)"><i class="fa fa-trash"></i></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script>
+		json = {
+			users: <%= @users.to_json.html_safe %>
+		}
+	</script>
+</div>

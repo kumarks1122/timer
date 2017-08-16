@@ -17,19 +17,23 @@
         <div class="form-group">
           <label for="user_email">Email</label><br />
           <input class="form-control" autofocus="autofocus" readonly onfocus="this.removeAttribute('readonly');"  type="email" placeholder="Email-id *" ng-model="signupUser.email" name="user[email]" id="user_email" required />
+          <span class="validation-invalid" ng-if="signupError.errors && signupError.errors.email">{{signupError.errors.email[0]}}</span>
         </div>
         <div class="form-group">
           <label for="user_email">Username</label><br />
           <input class="form-control" autofocus="autofocus" readonly onfocus="this.removeAttribute('readonly');"  type="name" placeholder="Username *" ng-model="signupUser.username" name="user[name]" id="user_username" required/>
+          <span class="validation-invalid" ng-if="signupError.errors && signupError.errors.username">{{signupError.errors.username[0]}}</span>
         </div>
         <div class="field">
           <label for="user_password">Password</label><br />
           <input class="form-control" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"  type="password" placeholder="Password *" ng-model="signupUser.password" name="user[password]" id="user_password" required />
+          <span class="validation-invalid" ng-if="signupError.errors && signupError.errors.password">{{signupError.errors.password[0]}}</span>
         </div>  
         <br>
         <div class="actions">
           <button type="submit" class="btn btn-primary loginbtn" name="commit">
-            Create
+            <span ng-hide="isLoading">Create</span>
+            <span ng-show="isLoading">Submitting</span>
           </button>
         </div>
         <div class="clearfix">
